@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  # 1. Nuestro Servidor Web
+  portal-web:
+    image: nginx:latest
+    container_name: junji-frontend
+    ports:
+      - "8080:80"
+    networks:
+      - red-institucional
+    restart: always
+
+  # 2. Nuestra Base de Datos Crítica
+  base-datos:
+    image: mysql:8.0
+    container_name: junji-backend
+    environment:
+      MYSQL_ROOT_PASSWORD: admin123
+    ports:
+      - "3306:3306"
+    networks:
+      - red-institucional
+    restart: always
+
+# 3. Nuestra Red Segura (El Router Virtual)
+networks:
+  red-institucional:
+    driver: bridge
