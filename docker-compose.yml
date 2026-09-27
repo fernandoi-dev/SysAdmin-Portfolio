@@ -4,7 +4,7 @@ services:
   # 1. Nuestro Servidor Web
   portal-web:
     image: nginx:latest
-    container_name: junji-frontend
+    container_name: prod-frontend
     ports:
       - "8080:80"
     networks:
@@ -14,7 +14,7 @@ services:
   # 2. Nuestra Base de Datos Crítica
   base-datos:
     image: mysql:8.0
-    container_name: junji-backend
+    container_name: prod-backend
     environment:
       MYSQL_ROOT_PASSWORD: admin123
     ports:
